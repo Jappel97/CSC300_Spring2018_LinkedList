@@ -26,6 +26,35 @@ public class Node
             this.nextNode.addEnd(payload);
         }
     }
+
+    public void addNext(int payload)
+    {
+        if(this.nextNode == null)
+        {
+            this.nextNode = new Node(payload);
+        }
+        else
+        {
+            Node temp = new Node(payload);
+            temp.setNextNode(this.getNextNode());
+            this.setNextNode(temp);
+        }
+    }
+
+    public int removeNext()
+    {
+        if(this.nextNode == null)
+        {
+            return -1;
+        }
+        else
+        {
+            int temp = this.nextNode.getPayload();
+            this.nextNode = this.nextNode.getNextNode();
+            return temp;
+        }
+    }
+
     public void display()
     {
         System.out.print(this.payload + " -> ");
@@ -34,6 +63,8 @@ public class Node
             this.nextNode.display();
         }
     }
+
+
 
     public int getPayload()
     {

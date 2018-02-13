@@ -119,6 +119,29 @@ public class LinkedList
         }
     }
 
+    public int altRemoveIndex(int index) throws Exception
+    {
+        if(head != null)
+        {
+            Node temp = this.head;
+            for(int i = 0; i < index; i++)
+            {
+                if(temp.getNextNode() == null)
+                {
+                    break;
+                }
+                temp = temp.getNextNode();
+            }
+            return temp.removeNext();
+        }
+        else
+        {
+            //error stuff
+            Toast.makeText(this.theContext,"Empty List", Toast.LENGTH_SHORT).show();
+            throw new Exception("Empty List");
+        }
+    }
+
     public void addFront(int payload)
     {
         Node n = new Node(payload);
@@ -194,6 +217,20 @@ public class LinkedList
         tv.setText("" + payload);
         tv.setGravity(Gravity.CENTER);
         this.linkedListContainer.addView(tv, index);
+    }
+
+    public void altAddIndex(int index, int payload)
+    {
+        Node temp = this.head;
+        for(int i = 0; i < index; i++)
+        {
+            if(temp.getNextNode() == null)
+            {
+                break;
+            }
+            temp = temp.getNextNode();
+        }
+        temp.addNext(payload);
     }
 
     public void display()
