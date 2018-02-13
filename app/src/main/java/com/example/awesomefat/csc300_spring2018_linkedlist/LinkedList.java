@@ -83,6 +83,42 @@ public class LinkedList
         }
     }
 
+    public int removeAtIndex(int index) throws Exception
+    {
+        if(this.head != null)
+        {
+            Node temp = this.head;
+            int payload = 0;
+            //set temp to the element before index
+            for(int i = 0; i < index; i++)
+            {
+                if(temp.getNextNode() == null)
+                {
+                    try
+                    {
+                        payload = this.removeEnd();
+                    }
+                    catch(Exception e){System.out.println("I'm honestly not sure how this happened!");}
+                    return payload;
+                }
+                temp = temp.getNextNode();
+            }
+            //store the payload of the index character (temp + 1)
+            payload = temp.getNextNode().getPayload();
+            //set temp's next node to the node after the node at index (temp + 2)
+            temp.setNextNode(temp.getNextNode().getNextNode());
+            this.linkedListContainer.removeViewAt(index);
+            return payload;
+
+        }
+        else
+        {
+            //we have an empty list
+            Toast.makeText(this.theContext,"Empty List", Toast.LENGTH_SHORT).show();
+            throw new Exception("Empty List");
+        }
+    }
+
     public void addFront(int payload)
     {
         Node n = new Node(payload);
@@ -133,6 +169,31 @@ public class LinkedList
             tv.setGravity(Gravity.CENTER);
             this.linkedListContainer.addView(tv);
         }
+    }
+
+    //counts up to the indexth entry in the list, and adds a new node.
+    //this will displace the list forward, such that the new node is now the indexth node.
+    public void addAtIndex(int index, int payload)
+    {
+        Node temp = this.head;
+        //iterate temp to be the node before element at index
+        for(int i = 0; i < index; i++)
+        {
+            if(temp.getNextNode() == null)
+            {
+                this.addEnd(payload);
+                return;
+            }
+            temp = temp.getNextNode();
+        }
+        Node newGuy = new Node(payload);
+        newGuy.setNextNode(temp.getNextNode());
+        temp.setNextNode(newGuy);
+
+        TextView tv = new TextView(this.theContext);
+        tv.setText("" + payload);
+        tv.setGravity(Gravity.CENTER);
+        this.linkedListContainer.addView(tv, index);
     }
 
     public void display()

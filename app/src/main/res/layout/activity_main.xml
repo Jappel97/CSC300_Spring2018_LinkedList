@@ -20,6 +20,10 @@
             android:inputType="number"
             android:textAlignment="center" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,6 +46,7 @@
                 android:text="Add End" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,11 +67,49 @@
                 android:layout_weight="1"
                 android:onClick="removeEndButtonClicked"
                 android:text="Remove End" />
+
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/indexET"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="index" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="addIndexButtonClicked"
+                android:text="Add Index" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="removeIndexButtonClicked"
+                android:text="Remove Index" />
+        </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            tools:layout_editor_absoluteY="142dp">
 
             <LinearLayout
                 android:id="@+id/linkedListContainer"
@@ -78,4 +121,5 @@
 
         </ScrollView>
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
